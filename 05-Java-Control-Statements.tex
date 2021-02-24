@@ -1,0 +1,169 @@
+\documentclass{article}
+\usepackage{minted}
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\DeleteFile}[2][]{}
+
+\title{Java Control Statements}
+\date{2021-02-23}
+\author{Liv}
+
+\begin{document}
+    \maketitle
+    \pagenumbering{arabic}
+
+    \section{Questions and Examples}
+
+    \subsection{The most basic control flow statement supported by the Java programming language is the \_\_\_\_\_ statement.}
+    The if-then statement.
+
+    \subsection{The \_\_\_\_\_ statement allows for any number of possible execution paths.}
+    The switch statement does.
+
+    \subsection{The \_\_\_\_\_ statement is similar to the while statement, but evaluates it's expression at the \_\_\_\_\_ of the loop.}
+    The do-while evaluates it's expression at the bottom of the loop.
+
+    \subsection{How do you write an infinite loop using the for statement?}
+    \begin{minted}{java}
+        for (int i = 0; i > 0; i++) {
+            System.out.println("This is an infinite loop");
+        }
+        for ( ; ; ) {
+            System.out.println("This is also an infinite loop");
+        }
+    \end{minted}
+
+    \subsection{How do you write an infinite loop using the while statement?}
+    \begin{minted}{java}
+        while (true) {
+            System.out.println("This is an infinite loop");
+        }
+    \end{minted}
+
+    \subsection{Consider the following code snippet.}
+    \subsubsection{What output do you think the code will produce if aNumber is 3?}
+    \begin{minted}{java}
+    int aNumber = 3;
+
+    if (aNumber >= 0) { // This block is entered because 3 is >= 0
+        if (aNumber == 0) { 
+            System.out.println("first string"); // does not print
+        } else { 
+            System.out.println("second string"); // prints
+        }
+    } 
+    System.out.println("third string"); // prints
+    \end{minted}
+
+    \subsubsection{Write a test program containing the previous code snippet, make aNumber 3. What is the output of the program? Is it what you predicted? Explain why the output is what it is; in other words, what is the control flow for the code snippet?}
+
+    \begin{minted}{java}
+    public class NumberTest {
+        public static void main(String[] args) {
+            int aNumber = 3;
+
+            if (aNumber >= 0) { // This block is entered because 3 is >= 0
+                if (aNumber == 0) { 
+                    System.out.println("first string"); // does not print
+                } else { 
+                    System.out.println("second string"); // prints
+                }
+            } 
+            System.out.println("third string"); // prints
+        }
+    }
+    \end{minted}
+
+    \paragraph{}
+    The output of the program is as follows, as predicted by the code comments. I explained the control flow in the comments, I feel it is clear enough.
+
+    \begin{minted}{java}
+    second string
+    third string
+    \end{minted}
+
+    \newpage
+    \subsubsection{Using only spaces and line breaks, reformat the code snippet to make the control flow easier to understand.}
+    
+    I feel this is as clear as you will get with only spaces and linebreaks.
+    
+    \begin{minted}{java}
+    if (aNumber >= 0)
+        if (aNumber == 0) System.out.println("first string");
+        else System.out.println("second string");
+    
+    System.out.println("third string");
+    \end{minted}
+
+    \subsubsection{Use braces, { and }, to further clarify the code.}
+    I have already done this in examples 1.6.1 and 1.6.2.
+
+    \subsection{Many centuries ago in India a very smart man is said to have invented the game of chess.}
+    I feel like I'm too tired to do this but oh well. I'm also doing this without an IDE or testing so I will be surprised if it works.
+
+    \begin{minted}{java}
+    public class RiceFarmer {
+        public static void main(String[] args) {
+            int rice = 1;
+            
+            for (i = 0; i < 64; i++) {
+                rice *= 2;
+            }
+            
+            System.out.println("Total rice grains are: " + rice);
+        }
+    }
+    \end{minted}
+
+    \subsection{Write a program that simulates rolling a pair of dice.}
+    This is dumb.
+    \begin{minted}{java}
+    public class DiceRoller {
+        public static void main(String[] args) {
+            int roll1 = (int) (Math.random()*6) + 1;
+            int roll2 = (int) (Math.random()*6) + 1;
+            
+            System.out.println("The first die comes up " + roll1);
+            System.out.println("The second die comes up " + roll2);
+            System.out.println("Your total roll is " + (roll1 + roll2));
+        }
+    }
+    \end{minted}
+
+    \subsection{How many times do you have to roll a pair of dice before they come up snake eyes?}
+
+    \begin{minted}{java}
+    public class DiceRoller {
+        public static void main(String[] args) {
+            int attempts = 0;
+            Boolean snakeEyes = false;
+
+            do {
+                int roll1 = (int) (Math.random()*6) + 1;
+                int roll2 = (int) (Math.random()*6) + 1;
+
+                attempts++;
+                if (roll1 == 0 && roll2 == 0) {
+                    snakeEyes = true;
+                }
+            } while (!snakeEyes)
+            
+            System.out.println("Found snake eyes after " + attempts + "attempts");
+        }
+    }
+    \end{minted}
+
+    \subsection{Write a program to extract each digit from an int, in the reverse order.}
+
+    \begin{minted}{java}
+        public class DigitExtractor {
+            public static void main(String[] args) {
+                int in = 1542;
+
+                for (int i = 0; i < in.toString().length(); i++) {
+                    // TODO
+                }
+            }
+        }
+    \end{minted}
+
+\end{document}
