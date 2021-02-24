@@ -153,17 +153,21 @@
     \end{minted}
 
     \subsection{Write a program to extract each digit from an int, in the reverse order.}
+    This could probably be more efficient if I used an IDE honestly, but I think it works.
 
     \begin{minted}{java}
-        public class DigitExtractor {
-            public static void main(String[] args) {
-                int in = 1542;
+    public class DigitExtractor {
+        public static void main(String[] args) {
+            int in = 1542;
+            String reversed = "";
 
-                for (int i = 0; i < in.toString().length(); i++) {
-                    // TODO
-                }
+            for (int i = 0; i < String.valueOf(in).length(); i++) {
+                reversed += String.valueOf((int) (in / (Math.pow(10, i))) % 10);
             }
+            
+            System.out.println(reversed);
         }
+    }
     \end{minted}
 
 \end{document}
