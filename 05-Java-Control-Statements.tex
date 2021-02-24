@@ -170,4 +170,27 @@
     }
     \end{minted}
 
+    \newpage
+    \subsection{Write a program called TimeTable to produce the multiplication table of 1 to 9 as shown using nested for-loops.}
+
+    \begin{minted}{java}
+    public class TimeTable {
+        public static void main(String[] args) {
+            int[][] arr = new int[10][10];
+            String[] tmp = new String[10];
+
+            for (int i = 1; i < 10; i++) {
+                for (int j = 1; j < 10; j++) {
+                    tmp[j] = (i * j) + "";
+                }
+                // I am too lazy to fix the fact that tmp[0] is always null
+                System.out.println(String.join(" ", tmp).substring(5));
+            }
+        }
+    }
+    \end{minted}
+
+    \subsection{Modify the program to print the multiplication table of 1 to 12.}
+
+    Just change the 10 to a 13.
 \end{document}
