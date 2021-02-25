@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage{minted}
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\DeleteFile}[2][]{}
+
+\title{Java Operators}
+\date{2021-02-24}
+\author{Liv}
+
+\begin{document}
+    \maketitle
+    \pagenumbering{arabic}
+
+    \section{Questions and Exercises}
+
+    \subsection{Consider the following code snippet.}
+    \subsubsection{What are the values of i and n after the code is executed}
+    The field 'i' is 11 and 'n' is 0.
+
+    \subsubsection{What are the final values of i and n if instead of using the postfix increment operator (i++), you use the prefix version (++i))?}
+    The field 'i' is 11 and 'n' is 1.
+
+    \subsection{To invert the value of a boolean, which operator would you use?}
+    \begin{minted}{java}
+    Boolean inverted = !foo;
+    \end{minted}
+
+    \subsection{Which operator is used to compare two values, = or == ?}
+    The '==' operator is.
+
+    \subsection{Explain the following code sample.}
+    \begin{minted}{java}
+        result = someCondition ? value1 : value2;
+
+        // Can be rewritten as
+        if (someCondition) {
+            result = value1;
+        } else {
+            result = value2;
+        }
+    \end{minted}
+
+    \subsection{Operators may be used in building \_\_\_\_\_, which compute values.}
+    In building expressions.
+
+    \subsection{Expressions are the core components of \_\_\_\_\_.}
+    They are the core components of statements.
+
+    \subsection{Statements may be grouped into \_\_\_\_\_.}
+    They may be grouped into blocks.
+
+    \subsection{Statements are roughly equivalent to sentences in natural languages, but instead of ending with a period, a statement ends with a \_\_\_\_\_.}
+    It ends with a semicolon.
+
+    \subsection{A block is a group of zero or more statements between balanced \_\_\_\_\_ and can be used anywhere a single statement is allowed.}
+    Statements between balanced braces.
+
+    \subsection{In the following program, explain why the value "6" is printed twice in a row.}
+    The value of '++i' increases immediately, while the value of 'i++' only increases in the next statement.
+
+    \newpage
+    \subsection{Write a program that accepts a price on the command line and prints out the appropriate tax and total purchase price.}
+
+    \begin{minted}{java}
+    public class SalesTax {
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter price");
+            
+            Double tax = 1.0825;
+            Double price = sc.nextDouble();
+            Double priceAfterTax = price * tax;
+            System.out.println("Tax is: " + (priceAfterTax - price));
+            System.out.println("Total cost is: " + priceAfterTax);
+        }
+    }
+    \end{minted}
+
+    \subsection{Write a program that takes a number of inches from the command line and converts it to centimeters.}
+
+    \begin{minted}{java}
+    public class InchesToCm {
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter inches");
+            
+            Double cmInInch = 2.54;
+            Double inches = sc.nextDouble();
+            System.out.println(inches + " inches is " + (inches * cmInInch) + "cm");
+        }
+    }
+    \end{minted}
+\end{document}
