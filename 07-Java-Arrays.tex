@@ -1,0 +1,127 @@
+\documentclass{article}
+\usepackage{minted}
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\DeleteFile}[2][]{}
+
+\title{Java Arrays}
+\date{2021-02-27}
+\author{Liv}
+
+\begin{document}
+    \maketitle
+    \pagenumbering{arabic}
+
+    \section{Exercises}
+
+    \subsection{Create a new class called Marks.}
+    \subsubsection{What is the purpose of the expression mark.length in line 8?}
+
+    To loop through all elements of the array. If you do not need to know 'i', which is the index of the array in this case, you can simplify it like so:
+
+    \begin{minted}{java}
+    System.out.println("The list of elements in the array are:");
+    for (int j : mark) {
+        System.out.println(j);
+    }
+    System.out.println("Finding the largest element in the array");
+    \end{minted}
+
+    \subsubsection{Why do the for loops in lines 8 and 29 start with int i=0 but the for loop in line 19 starts with int i=1?}
+
+    Because the 'maxValue' is already set to 'mark[0]', you can technically optimize the code by starting at 'mark[1]' instead.
+
+    \subsubsection{Which line silently invokes the constructor for int arrays?}
+
+    I don't see one, unless you mean the first line that creates 'mark'.
+
+    \subsubsection{Change the array initialisation (line 5) so it contains the additional values 10, 42 and 20.}
+
+    \begin{minted}{java}
+    int[] mark = {17, 21, 18, 42, 16, 19, 21, 10, 42, 20};
+    \end{minted}
+
+    \subsubsection{Run main() with this new set of values. What is wrong with the results for the maximum value?}
+
+    It does not find the 42 at position 8.
+
+    \subsubsection{Change the program so that it handles multiple occurrences of the maximum.}
+
+    Change this
+    \begin{minted}{java}
+    for (int i = 1; i < mark.length; i++) {
+        if (maxValue < mark[i]) {
+            maxValue = mark[i];
+            maxPosition = i;
+        }
+    }
+    \end{minted}
+    to
+    \begin{minted}{java}
+    for (int i = 1; i < mark.length; i++) {
+        if (maxValue <= mark[i]) { // Use <= instead
+            maxValue = mark[i];
+            maxPosition = i;
+        }
+    }
+    \end{minted}
+
+    \subsubsection{Change the program so it also prints out the minimum value or values.}
+
+    \begin{minted}{java}
+    for (int i = 1; i < mark.length; i++) {
+        if (minValue >= mark[i]) { // Use >= instead
+            minValue = mark[i];
+            maxPosition = i;
+        }
+    }
+    \end{minted}
+
+    \subsubsection{Change the program so that it calculates the average mark.}
+
+    \begin{minted}{java}
+    System.out.println("Finding the average mark");
+
+    int total = 0, count = 0;
+
+    for (int j : mark) {
+        total = total + j;
+        count++;
+    }
+
+    System.out.println("The average of " + count +
+    " values is " + (total / (double) mark.length));
+    \end{minted}
+
+    \newpage
+    \subsubsection{Change the program so that it prints out all the marks greater than the average mark.}
+
+    \begin{minted}{java}
+    ArrayList<String> highestMarks = new ArrayList<>();
+
+    for (int k : mark) {
+        if (k > average) {
+            highestMarks.add(String.valueOf(k));
+        }
+    }
+
+    System.out.println("Marks found above average mark: " + 
+    String.join(", ", highestMarks));
+    \end{minted}
+
+    \subsubsection{Change the program so that it prints out the largest mark that is just less than the average.}
+
+    \begin{minted}{java}
+    int lowerThanAverage = mark[0];
+
+    for (int i = 1; i < mark.length; i++) {
+        if (mark[i] >= lowerThanAverage && average > mark[i]) {
+            lowerThanAverage = mark[i];
+            maxPosition = i;
+        }
+    }
+
+    System.out.println("Lower than average value = " + 
+    lowerThanAverage + " at position = " + maxPosition);
+    \end{minted}
+
+\end{document}
